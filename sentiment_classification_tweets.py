@@ -106,16 +106,10 @@ loss_function = nn.NLLLoss()
 optimizer = optim.SGD(rnn.parameters(), lr=0.001)
 
 
-
-f1 = open(('data/output_tweetsent_loss.csv'), 'w+')
-fieldnames = ["epoch","loss"]
-writer1 = csv.DictWriter(f1, fieldnames=fieldnames)
-writer1.writeheader()
-all_losses = []
 for epoch in range(30):  # again, normally you would NOT do 300 epochs, it is toy data
     if epoch % 5 == 0:
         print("Finnished epoch " + str(epoch / 30 * 100)  + "%")
-    total_loss = 0
+
     for i in range(len(train_tweets)):
         sentence = train_tweets[i]
         sent_class = tweet_sent_class[i]
@@ -142,18 +136,17 @@ for epoch in range(30):  # again, normally you would NOT do 300 epochs, it is to
         #  calling optimizer.step()
         #print(class_scores)
         loss = loss_function(class_scores, target_class)
-        total_loss += loss.item()
+
         loss.backward()
         optimizer.step()
-    all_losses.append(total_loss)
-    writer1.writerow({"epoch": epoch,  "loss": total_loss})
-f1.close()
+
+
 
 
 
 
 sentiment_class = list(sentiment_class)
-f = open(('data/output_tweets_test.csv'), 'w+')
+f = open(('output_tweets_test.csv'), 'w+')
 fieldnames = ["tweet_desc", "class_size", "sentiment_pred","sentiment_name","actual_class"]
 writer = csv.DictWriter(f, fieldnames=fieldnames)
 writer.writeheader()
