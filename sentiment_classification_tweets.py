@@ -146,7 +146,7 @@ for epoch in range(30):  # again, normally you would NOT do 300 epochs, it is to
 
 
 sentiment_class = list(sentiment_class)
-f = open(('output_tweets_test.csv'), 'w+')
+f = open(('output_tweets_test2.csv'), 'w+')
 fieldnames = ["tweet_desc", "class_size", "sentiment_pred","sentiment_name","actual_class"]
 writer = csv.DictWriter(f, fieldnames=fieldnames)
 writer.writeheader()
