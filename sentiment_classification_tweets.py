@@ -169,7 +169,6 @@ with torch.no_grad():
 
 f.close()
 
-print(all_losses)
 print(sentiment_class)
 print(confusion_matrix(y_actual, y_pred, labels=sentiment_class))
 print(accuracy_score(y_actual, y_pred))
