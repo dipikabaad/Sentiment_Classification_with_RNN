@@ -11,7 +11,7 @@ from sklearn.metrics import confusion_matrix
 
 
 # FILPATH to tweets dataset
-INPUTFILE_PATH = "data/twitter-airline-sentiment/Tweets.csv"
+INPUTFILE_PATH = "Tweets.csv"
 
 tweets = []
 train_tweets =[]
