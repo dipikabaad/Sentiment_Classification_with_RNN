@@ -64,8 +64,6 @@ def map_word_vocab(sentence):
     return torch.tensor(idxs, dtype=torch.long)
 
 def map_class(sentiment):
-    classes = [0 for i in range(len(sentiment_class))]
-    classes[class_dict[sentiment]] = 1
     return torch.tensor([class_dict[sentiment]], dtype=torch.long)
 
 def prepare_sequence(sentence):
